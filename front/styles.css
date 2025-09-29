@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #EFEFEF;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 28px;
+}
+
+.login-wrapper {
+    display: flex;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    height: 825px;
+}
+
+.left-panel {
+    flex: 1;
+    background: #222137;
+    position: relative;
+    border-radius: 20px 0 0 20px;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.right-panel {
+    width: 531px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 408px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 32px;
+    color: #282C35;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 16px;
+    color: #777777;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.input-field {
+    width: 100%;
+    height: 68px;
+    padding: 0 20px 0 50px;
+    border: 2px solid rgba(131, 131, 131, 0.8);
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #169300;
+}
+
+.input-field::placeholder {
+    color: #A1A1A1;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: #FFBD3C;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.sign-in-button {
+    width: 100%;
+    height: 68px;
+    background: #FFBD3C;
+    border: none;
+    border-radius: 10px;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.sign-in-button:hover {
+    background: #E5AA36;
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 14px;
+    color: #FFBD3C;
+    font-family: 'Roboto', sans-serif;
+}
+
+.signup-link a {
+    color: #FFBD3C;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .login-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .left-panel {
+        height: 300px;
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .right-panel {
+        width: 100%;
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .login-wrapper {
+        margin: 20px 0;
+    }
+    
+    .title {
+        font-size: 28px;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+    }
+    
+    .input-field {
+        height: 60px;
+        font-size: 18px;
+    }
+    
+    .sign-in-button {
+        height: 60px;
+        font-size: 18px;
+    }
+}
