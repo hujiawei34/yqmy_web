@@ -1,1 +1,7 @@
 .mcp.json
+target/
+logs/
+*.log
+*.class
+*.jar
+pic/
