@@ -7,15 +7,7 @@ function setupHomepage() {
     // Login modal functionality
     const loginModal = document.getElementById('loginModal');
     const modalOverlay = document.querySelector('.modal-overlay');
-    const exploreBtn = document.querySelector('.explore-btn');
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Show login modal when explore button is clicked
-    if (exploreBtn) {
-        exploreBtn.addEventListener('click', function() {
-            showLoginModal();
-        });
-    }
     
     // Show login modal when nav links are clicked (except explore services)
     navLinks.forEach(link => {
@@ -58,12 +50,12 @@ function setupHomepage() {
     
     // Add scroll effect to navbar
     window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
+        const navbar = document.querySelector('.primary-header');
         if (navbar) {
             if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                navbar.style.boxShadow = '0 6px 20px rgba(40, 44, 53, 0.12)';
             } else {
-                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                navbar.style.boxShadow = '0 1px 0 rgba(40, 44, 53, 0.05)';
             }
         }
     });
@@ -97,6 +89,8 @@ function setupHomepage() {
             showLoginModal();
         });
     }
+
+    setupCarousels();
 }
 
 function setupLoginForm() {
@@ -170,6 +164,60 @@ function setupLoginForm() {
             alert('Password reset functionality would be implemented here');
         });
     }
+}
+
+function setupCarousels() {
+    const carousels = document.querySelectorAll('[data-carousel]');
+
+    carousels.forEach(section => {
+        const track = section.querySelector('.carousel-track');
+        const prevBtn = section.querySelector('.carousel-arrow--prev');
+        const nextBtn = section.querySelector('.carousel-arrow--next');
+
+        if (!track || (!prevBtn && !nextBtn)) {
+            return;
+        }
+
+        const getScrollAmount = () => {
+            const item = track.querySelector('.service-card, .promo-card');
+            if (!item) {
+                return track.clientWidth;
+            }
+
+            const styles = window.getComputedStyle(track);
+            const gap = parseInt(styles.columnGap || styles.gap || '0', 10);
+            return item.clientWidth + gap;
+        };
+
+        const updateControls = () => {
+            const maxScrollLeft = track.scrollWidth - track.clientWidth - 1;
+
+            if (prevBtn) {
+                const atStart = track.scrollLeft <= 0;
+                prevBtn.disabled = atStart;
+                prevBtn.classList.toggle('carousel-arrow--disabled', atStart);
+            }
+
+            if (nextBtn) {
+                const atEnd = track.scrollLeft >= maxScrollLeft;
+                nextBtn.disabled = atEnd;
+                nextBtn.classList.toggle('carousel-arrow--disabled', atEnd);
+            }
+        };
+
+        prevBtn?.addEventListener('click', () => {
+            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        nextBtn?.addEventListener('click', () => {
+            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        track.addEventListener('scroll', updateControls, { passive: true });
+        window.addEventListener('resize', updateControls);
+
+        updateControls();
+    });
 }
 
 function isElementVisible(element) {

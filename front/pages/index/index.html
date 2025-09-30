@@ -4,130 +4,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nevic's - Freelance Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-    <link rel="icon" href="../../images/yqmy_logo.png" type="image/png">
+    <link rel="icon" href="../../images/common/yqmy_logo.png" type="image/png">
 </head>
 <body>
     <!-- Navigation Header -->
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <h1 class="brand-text">Nevic's</h1>
+    <header class="primary-header">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="#" class="brand-text">Nevic's</a>
+                <form class="header-search" action="#" role="search">
+                    <label class="sr-only" for="headerSearch">Find services</label>
+                    <input id="headerSearch" type="text" placeholder="Find Services" class="search-input" aria-label="Search services">
+                    <button type="button" class="search-btn">Search</button>
+                </form>
             </div>
-            <nav class="nav-menu">
-                <a href="#" class="nav-link">Find Services</a>
-                <a href="#" class="nav-link">Messages</a>
-                <a href="#" class="nav-link">Notifications</a>
-                <a href="#" class="nav-link">Orders</a>
-            </nav>
-            <div class="nav-actions">
-                <div class="search-container">
-                    <input type="text" placeholder="Search" class="search-input">
-                    <button class="search-btn">
-                        <img src="../../images/search-icon.svg" alt="Search" width="17" height="17">
-                    </button>
+            <div class="header-right">
+                <nav class="nav-menu" aria-label="Primary">
+                    <a href="#" class="nav-link">Orders</a>
+                    <a href="#" class="nav-link nav-link-active">Explore Services</a>
+                    <a href="#" class="nav-link">Notifications</a>
+                    <a href="#" class="nav-link">Messages</a>
+                </nav>
+                <button type="button" class="custom-offer-btn">
+                    <img src="../../images/index/add-icon.svg" alt="" width="16" height="16" aria-hidden="true">
+                    <span>Add your custom offer</span>
+                </button>
+                <div class="profile-avatar" role="img" aria-label="User profile">
+                    <img src="../../images/index/hero-avatar.png" alt="User avatar">
                 </div>
-                <button class="custom-offer-btn">
-                    <img src="../../images/add-icon.svg" alt="Add" width="16" height="16">
-                    Add your custom offer
-                </button>
-                <button class="help-btn">
-                    <img src="../../images/question-icon.svg" alt="Help" width="19" height="19">
-                </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background">
-            <div class="hero-ellipse ellipse-1"></div>
-            <div class="hero-ellipse ellipse-2"></div>
+        <div class="hero-copy container">
+            <h1 class="hero-heading">Find local professionals for pretty much anything.</h1>
         </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Find local professionals for pretty much anything.</h1>
-            <p class="hero-subtitle">Providing services round the globe</p>
-            <p class="hero-description">
-                Doesn't matter at which part of world you are at<br>
-                let us know what you need and get best<br>
-                professionals for you work.
-            </p>
-            <button class="explore-btn">Explore more services</button>
+        <div class="hero-banner">
+            <button type="button" class="hero-arrow hero-arrow--prev" aria-label="Previous slide">
+                <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+            </button>
+            <div class="hero-image-wrapper">
+                <img src="../../images/index/carousel-strip-1.png" alt="Hand holding a phone with glowing cloud graphic" class="hero-image">
+            </div>
+            <button type="button" class="hero-arrow hero-arrow--next" aria-label="Next slide">
+                <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+            </button>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
+    <!-- Explore Services -->
+    <section class="service-showcase" data-carousel>
         <div class="container">
-            <h2 class="section-title">Services you might also like</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon" style="background: #FF6B6B;">
-                        <div class="service-ellipse"></div>
-                    </div>
-                    <h3 class="service-title">Web Development</h3>
-                    <div class="service-price">
-                        <span class="price-label">Avg. price:</span>
-                        <span class="price-value">$50-200</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon" style="background: #4ECDC4;">
-                        <div class="service-ellipse"></div>
-                    </div>
-                    <h3 class="service-title">Graphic Designing</h3>
-                    <div class="service-price">
-                        <span class="price-label">Avg. price:</span>
-                        <span class="price-value">$30-150</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon" style="background: #45B7D1;">
-                        <div class="service-ellipse"></div>
-                    </div>
-                    <h3 class="service-title">Mobile App Development</h3>
-                    <div class="service-price">
-                        <span class="price-label">Avg. price:</span>
-                        <span class="price-value">$100-500</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon" style="background: #96CEB4;">
-                        <div class="service-ellipse"></div>
-                    </div>
-                    <h3 class="service-title">Digital Marketing</h3>
-                    <div class="service-price">
-                        <span class="price-label">Avg. price:</span>
-                        <span class="price-value">$40-180</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon" style="background: #FFEAA7;">
-                        <div class="service-ellipse"></div>
-                    </div>
-                    <h3 class="service-title">Content Writing</h3>
-                    <div class="service-price">
-                        <span class="price-label">Avg. price:</span>
-                        <span class="price-value">$20-100</span>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon" style="background: #DDA0DD;">
-                        <div class="service-ellipse"></div>
-                    </div>
-                    <h3 class="service-title">Video Editing</h3>
-                    <div class="service-price">
-                        <span class="price-label">Avg. price:</span>
-                        <span class="price-value">$35-120</span>
-                    </div>
-                </div>
+            <div class="service-showcase__header">
+                <h2 class="service-showcase__title">Explore more services</h2>
             </div>
+            <div class="service-carousel">
+                <button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Previous services">
+                    <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+                </button>
+                <div class="carousel-track service-track" role="list">
+                <article class="service-card" role="listitem">
+                    <figure class="service-card__thumb">
+                        <img src="../../images/index/service-web-development.png" alt="Developer working on multiple screens">
+                    </figure>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Web Development</h3>
+                        <div class="service-card__footer">
+                            <span class="service-card__price-icon" aria-hidden="true">
+                                <img src="../../images/index/service-price-icon.png" alt="">
+                            </span>
+                            <div class="service-card__price">
+                                <span class="service-card__label">Avg. price:</span>
+                                <span class="service-card__value">$110-$150</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card" role="listitem">
+                    <figure class="service-card__thumb">
+                        <img src="../../images/index/service-mobile-app.png" alt="Illustration of mobile app development">
+                    </figure>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Mobile App Development</h3>
+                        <div class="service-card__footer">
+                            <span class="service-card__price-icon" aria-hidden="true">
+                                <img src="../../images/index/service-price-icon.png" alt="">
+                            </span>
+                            <div class="service-card__price">
+                                <span class="service-card__label">Avg. price:</span>
+                                <span class="service-card__value">$110-$150</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card" role="listitem">
+                    <figure class="service-card__thumb">
+                        <img src="../../images/index/service-graphic-design.png" alt="Creative workspace for graphic designing">
+                    </figure>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Graphic Designing</h3>
+                        <div class="service-card__footer">
+                            <span class="service-card__price-icon" aria-hidden="true">
+                                <img src="../../images/index/service-price-icon.png" alt="">
+                            </span>
+                            <div class="service-card__price">
+                                <span class="service-card__label">Avg. price:</span>
+                                <span class="service-card__value">$110-$150</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                </div>
+                <button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Next services">
+                    <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Services -->
+    <section class="service-showcase service-showcase--alt" data-carousel>
+        <div class="container">
+            <div class="service-showcase__header">
+                <h2 class="service-showcase__title">Services you might also like</h2>
+            </div>
+            <div class="service-carousel">
+                <button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Previous recommended services">
+                    <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+                </button>
+                <div class="carousel-track service-track" role="list">
+                <article class="service-card" role="listitem">
+                    <figure class="service-card__thumb">
+                        <img src="../../images/index/service-web-development-alt.png" alt="Illustrated web development dashboard">
+                    </figure>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Web Development</h3>
+                        <div class="service-card__footer">
+                            <span class="service-card__price-icon" aria-hidden="true">
+                                <img src="../../images/index/service-price-icon.png" alt="">
+                            </span>
+                            <div class="service-card__price">
+                                <span class="service-card__label">Avg. price:</span>
+                                <span class="service-card__value">$110-$150</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card" role="listitem">
+                    <figure class="service-card__thumb">
+                        <img src="../../images/index/service-mobile-app-alt.png" alt="Mobile app design on smartphone">
+                    </figure>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Mobile App Development</h3>
+                        <div class="service-card__footer">
+                            <span class="service-card__price-icon" aria-hidden="true">
+                                <img src="../../images/index/service-price-icon.png" alt="">
+                            </span>
+                            <div class="service-card__price">
+                                <span class="service-card__label">Avg. price:</span>
+                                <span class="service-card__value">$110-$150</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-card" role="listitem">
+                    <figure class="service-card__thumb">
+                        <img src="../../images/index/service-graphic-design-alt.png" alt="Colorful graphic design dashboard">
+                    </figure>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Graphic Designing</h3>
+                        <div class="service-card__footer">
+                            <span class="service-card__price-icon" aria-hidden="true">
+                                <img src="../../images/index/service-price-icon.png" alt="">
+                            </span>
+                            <div class="service-card__price">
+                                <span class="service-card__label">Avg. price:</span>
+                                <span class="service-card__value">$110-$150</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                </div>
+                <button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Next recommended services">
+                    <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Reach Section -->
+    <section class="global-section">
+        <div class="container global-section__inner">
+            <div class="global-section__illustration">
+                <img src="../../images/index/hero-globe.png" alt="Connected globe illustration">
+            </div>
+            <div class="global-section__content">
+                <h2 class="global-section__title">Providing services round the globe</h2>
+                <p class="global-section__description">
+                    Doesn’t matter at which part of world you are at – let us know what you need and get best professionals for your work.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Carousel -->
+    <section class="promo-carousel" data-carousel>
+        <div class="promo-carousel__viewport">
+            <button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Previous promotion">
+                <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+            </button>
+            <div class="carousel-track promo-track" role="list">
+                <article class="promo-card" role="listitem">
+                    <img src="../../images/index/carousel-card-1.png" alt="Mobile app UI design screens" class="promo-card__image">
+                    <h3 class="promo-card__title">Do you need an UI design for your Mobile App?</h3>
+                </article>
+                <article class="promo-card" role="listitem">
+                    <img src="../../images/index/carousel-card-2.png" alt="Professional business card mockups" class="promo-card__image">
+                    <h3 class="promo-card__title">Need a professional Business Card?</h3>
+                </article>
+                <article class="promo-card" role="listitem">
+                    <img src="../../images/index/carousel-strip-3.png" alt="Mobile banking app design" class="promo-card__image">
+                    <h3 class="promo-card__title">Do you need an UI design for your Mobile App?</h3>
+                </article>
+            </div>
+            <button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Next promotion">
+                <img src="../../images/index/right-arrow.svg" alt="" aria-hidden="true">
+            </button>
         </div>
     </section>
 
@@ -136,12 +246,12 @@
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <div class="modal-left">
-                <img src="../../images/login-background.png" alt="Background" class="modal-background">
+                <img src="../../images/common/login-background.png" alt="Background" class="modal-background">
             </div>
             <div class="modal-right">
                 <div class="login-form">
                     <div class="logo-container">
-                        <img src="../../images/yqmy_logo.png" alt="YQMY Logo" class="logo">
+                        <img src="../../images/common/yqmy_logo.png" alt="YQMY Logo" class="logo">
                     </div>
                     <h1 class="title">Sign In</h1>
                     <p class="subtitle">Type your username and password to sign in</p>
