@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   redis:
     image: redis:latest
@@ -42,11 +40,10 @@ services:
       - yqmy-network
 
   builder:
-    image: maven:3.9.6-openjdk-17
+    image: dev_container:latest
     container_name: yqmy-builder
     volumes:
       - ../../backend:/app
-      - ./maven-settings.xml:/root/.m2/settings.xml
     working_dir: /app
     command: mvn clean package -q -DskipTests
     networks:
