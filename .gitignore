@@ -1,7 +1,7 @@
 .mcp.json
-target/
-logs/
-*.log
-*.class
-*.jar
-pic/
+**/target/
+**/logs/
+**/*.log
+**/*.class
+**/*.jar
+**/pic/
