@@ -41,6 +41,17 @@ services:
     networks:
       - yqmy-network
 
+  builder:
+    image: maven:3.9.6-openjdk-17
+    container_name: yqmy-builder
+    volumes:
+      - ../../backend:/app
+      - ./maven-settings.xml:/root/.m2/settings.xml
+    working_dir: /app
+    command: mvn clean package -q -DskipTests
+    networks:
+      - yqmy-network
+
   backend:
     image: openjdk:17-jdk-slim
     container_name: yqmy-backend
@@ -50,15 +61,16 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../target/yqmy-web-1.0-SNAPSHOT.jar:/app/yqmy-web.jar
-      - ../logs:/app/logs
-      - ../uploads:/app/uploads
+      - ../../backend/target/yqmy-web-1.0-SNAPSHOT.jar:/app/yqmy-web.jar
+      - ../../backend/logs:/app/logs
+      - ../../backend/uploads:/app/uploads
     working_dir: /app
     command: java -jar yqmy-web.jar
     depends_on:
       - redis
       - postgres
       - minio
+      - builder
     networks:
       - yqmy-network
 
