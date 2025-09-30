@@ -1,0 +1,569 @@
+/* Homepage Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 28px;
+}
+
+.navbar {
+    background: #1E1E1E;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+.nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #FF6B6B;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 200px;
+    height: 40px;
+    padding: 0 40px 0 16px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    background: #2A2A2A;
+    color: #FFFFFF;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #FF6B6B;
+}
+
+.search-btn {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.custom-offer-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-offer-btn:hover {
+    background: #FF5252;
+}
+
+.help-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 8px;
+}
+
+.hero {
+    margin-top: 80px;
+    min-height: 600px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+}
+
+.hero-ellipse {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+}
+
+.ellipse-1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    right: -150px;
+}
+
+.ellipse-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    left: -100px;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    opacity: 0.9;
+}
+
+.hero-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    opacity: 0.8;
+}
+
+.explore-btn {
+    padding: 16px 32px;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.explore-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.services {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #282C35;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 15px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.service-ellipse {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.service-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #282C35;
+    margin-bottom: 16px;
+}
+
+.service-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.price-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+.price-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FF0000;
+}
+
+/* Import Google Fonts for login modal */
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&family=Roboto:wght@400;500&display=swap');
+
+/* Login Modal Styles */
+.login-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;
+    overflow: hidden;
+}
+
+.modal-left {
+    flex: 1;
+    background: #222137;
+    position: relative;
+}
+
+.modal-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.modal-right {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 408px;
+}
+
+.login-form .logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form .logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form .title {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 32px;
+    color: #282C35;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.login-form .subtitle {
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 16px;
+    color: #777777;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-form .input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.login-form .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.login-form .input-field {
+    width: 100%;
+    height: 68px;
+    padding: 0 20px 0 50px;
+    border: 2px solid rgba(131, 131, 131, 0.8);
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    transition: border-color 0.3s ease;
+}
+
+.login-form .input-field:focus {
+    outline: none;
+    border-color: #169300;
+}
+
+.login-form .input-field::placeholder {
+    color: #A1A1A1;
+}
+
+.login-form .form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.login-form .forgot-password {
+    font-size: 14px;
+    color: #FFBD3C;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-form .forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-form .sign-in-button {
+    width: 100%;
+    height: 68px;
+    background: #FF0000;
+    border: none;
+    border-radius: 10px;
+    font-family: 'RocknRoll One', sans-serif;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.login-form .sign-in-button:hover {
+    background: #E50000;
+}
+
+.login-form .signup-link {
+    text-align: center;
+    font-size: 14px;
+    color: #FFBD3C;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-form .signup-link a {
+    color: #FFBD3C;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive for homepage */
+@media (max-width: 1024px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-menu {
+        order: 2;
+    }
+    
+    .nav-actions {
+        order: 1;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 20px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .modal-content {
+        flex-direction: column;
+        width: 95%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .modal-left {
+        height: 200px;
+    }
+    
+    .modal-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 16px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .search-input {
+        width: 150px;
+    }
+    
+    .hero {
+        margin-top: 120px;
+        min-height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+    }
+    
+    .services {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: 24px;
+    }
+}

@@ -5,9 +5,11 @@
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/service/FileService.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/controller/UserController.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/YqmyWebApplication.java
+/root/code/github/yqmy_web/backend/src/main/java/com/yqmy/config/CorsConfig.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/service/UserService.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/service/impl/FileServiceImpl.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/config/MinioConfig.java
+/root/code/github/yqmy_web/backend/src/main/java/com/yqmy/config/WebConfig.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/config/SwaggerConfig.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/service/impl/UserServiceImpl.java
 /root/code/github/yqmy_web/backend/src/main/java/com/yqmy/config/RedisConfig.java

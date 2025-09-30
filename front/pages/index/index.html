@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nevic's - Freelance Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="../../images/yqmy_logo.png" type="image/png">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="brand-text">Nevic's</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Find Services</a>
+                <a href="#" class="nav-link">Messages</a>
+                <a href="#" class="nav-link">Notifications</a>
+                <a href="#" class="nav-link">Orders</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-btn">
+                        <img src="../../images/search-icon.svg" alt="Search" width="17" height="17">
+                    </button>
+                </div>
+                <button class="custom-offer-btn">
+                    <img src="../../images/add-icon.svg" alt="Add" width="16" height="16">
+                    Add your custom offer
+                </button>
+                <button class="help-btn">
+                    <img src="../../images/question-icon.svg" alt="Help" width="19" height="19">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-ellipse ellipse-1"></div>
+            <div class="hero-ellipse ellipse-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Find local professionals for pretty much anything.</h1>
+            <p class="hero-subtitle">Providing services round the globe</p>
+            <p class="hero-description">
+                Doesn't matter at which part of world you are at<br>
+                let us know what you need and get best<br>
+                professionals for you work.
+            </p>
+            <button class="explore-btn">Explore more services</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Services you might also like</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" style="background: #FF6B6B;">
+                        <div class="service-ellipse"></div>
+                    </div>
+                    <h3 class="service-title">Web Development</h3>
+                    <div class="service-price">
+                        <span class="price-label">Avg. price:</span>
+                        <span class="price-value">$50-200</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: #4ECDC4;">
+                        <div class="service-ellipse"></div>
+                    </div>
+                    <h3 class="service-title">Graphic Designing</h3>
+                    <div class="service-price">
+                        <span class="price-label">Avg. price:</span>
+                        <span class="price-value">$30-150</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: #45B7D1;">
+                        <div class="service-ellipse"></div>
+                    </div>
+                    <h3 class="service-title">Mobile App Development</h3>
+                    <div class="service-price">
+                        <span class="price-label">Avg. price:</span>
+                        <span class="price-value">$100-500</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: #96CEB4;">
+                        <div class="service-ellipse"></div>
+                    </div>
+                    <h3 class="service-title">Digital Marketing</h3>
+                    <div class="service-price">
+                        <span class="price-label">Avg. price:</span>
+                        <span class="price-value">$40-180</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: #FFEAA7;">
+                        <div class="service-ellipse"></div>
+                    </div>
+                    <h3 class="service-title">Content Writing</h3>
+                    <div class="service-price">
+                        <span class="price-label">Avg. price:</span>
+                        <span class="price-value">$20-100</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: #DDA0DD;">
+                        <div class="service-ellipse"></div>
+                    </div>
+                    <h3 class="service-title">Video Editing</h3>
+                    <div class="service-price">
+                        <span class="price-label">Avg. price:</span>
+                        <span class="price-value">$35-120</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal (Hidden by default) -->
+    <div class="login-modal" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-left">
+                <img src="../../images/login-background.png" alt="Background" class="modal-background">
+            </div>
+            <div class="modal-right">
+                <div class="login-form">
+                    <div class="logo-container">
+                        <img src="../../images/yqmy_logo.png" alt="YQMY Logo" class="logo">
+                    </div>
+                    <h1 class="title">Sign In</h1>
+                    <p class="subtitle">Type your username and password to sign in</p>
+                    
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                                    <path d="M14 14C17.3137 14 20 11.3137 20 8C20 4.68629 17.3137 2 14 2C10.6863 2 8 4.68629 8 8C8 11.3137 10.6863 14 14 14Z" stroke="#282C35" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 16.3333C9.66666 16.3333 2 18.6667 2 23V24.5C2 25.3284 2.67157 26 3.5 26H24.5C25.3284 26 26 25.3284 26 24.5V23C26 18.6667 18.3333 16.3333 14 16.3333Z" stroke="#282C35" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <input type="text" id="username" name="username" placeholder="carrytucker" class="input-field">
+                        </div>
+                        
+                        <div class="input-group">
+                            <div class="input-icon">
+                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                                    <path d="M21.5833 12.8333H6.41667C5.15233 12.8333 4.125 13.8607 4.125 15.125V21.5833C4.125 22.8477 5.15233 23.875 6.41667 23.875H21.5833C22.8477 23.875 23.875 22.8477 23.875 21.5833V15.125C23.875 13.8607 22.8477 12.8333 21.5833 12.8333Z" stroke="#A1A1A1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.70833 12.8333V8.16667C8.70833 6.5087 9.36667 4.91349 10.5539 3.72624C11.7411 2.53899 13.3363 1.88066 14.9943 1.88066C16.6523 1.88066 18.2475 2.53899 19.4348 3.72624C20.622 4.91349 21.2803 6.5087 21.2803 8.16667V12.8333" stroke="#A1A1A1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <input type="password" id="password" name="password" placeholder="Password" class="input-field">
+                        </div>
+                        
+                        <div class="form-footer">
+                            <a href="#" class="forgot-password">Forgot?</a>
+                        </div>
+                        
+                        <button type="submit" class="sign-in-button">Sign In</button>
+                    </form>
+                    
+                    <p class="signup-link">
+                        Don't have an account? <a href="../signup/signup.html">Sign Up now</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres-server:5432/yqmy_db
+    url: jdbc:postgresql://localhost:5432/yqmy_db
     username: postgres
     password: pgsql@yqmy
   redis:
@@ -34,7 +34,7 @@ mybatis-plus:
   type-aliases-package: com.yqmy.entity
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   global-config:
     db-config:
       id-type: auto

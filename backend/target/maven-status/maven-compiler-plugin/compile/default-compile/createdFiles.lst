@@ -1,5 +1,6 @@
 com/yqmy/service/FileService.class
 com/yqmy/mapper/UserMapper.class
+com/yqmy/config/WebConfig.class
 com/yqmy/config/MinioConfig.class
 com/yqmy/service/UserService.class
 com/yqmy/controller/FileController.class
@@ -9,5 +10,6 @@ com/yqmy/service/impl/UserServiceImpl.class
 com/yqmy/config/RedisConfig.class
 com/yqmy/YqmyWebApplication.class
 com/yqmy/config/SwaggerConfig.class
+com/yqmy/config/CorsConfig.class
 com/yqmy/entity/User.class
 com/yqmy/controller/UserController.class
