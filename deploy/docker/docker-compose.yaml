@@ -39,18 +39,8 @@ services:
     networks:
       - yqmy-network
 
-  builder:
-    image: dev_container:latest
-    container_name: yqmy-builder
-    volumes:
-      - ../../backend:/app
-    working_dir: /app
-    command: mvn clean package -q -DskipTests
-    networks:
-      - yqmy-network
-
   backend:
-    image: openjdk:17-jdk-slim
+    image: dev_container:latest
     container_name: yqmy-backend
     restart: unless-stopped
     environment:
@@ -58,16 +48,15 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../../backend/target/yqmy-web-1.0-SNAPSHOT.jar:/app/yqmy-web.jar
+      - ../../backend:/app
       - ../../backend/logs:/app/logs
       - ../../backend/uploads:/app/uploads
     working_dir: /app
-    command: java -jar yqmy-web.jar
+    command: ./start.sh
     depends_on:
       - redis
       - postgres
       - minio
-      - builder
     networks:
       - yqmy-network
 
