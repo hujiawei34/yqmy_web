@@ -31,7 +31,7 @@ YQMY Web (要钱没用) is a task/freelance platform where users use points inst
 ### Key Technologies
 - **Backend**: Spring Boot, MyBatis Plus, PostgreSQL, Redis, MinIO, Swagger/SpringFox
 - **Frontend**: Vanilla JavaScript, CSS3, HTML5
-- **Deployment**: Podman containers with host networking
+- **Deployment**: Docker containers with host networking
 
 ## Common Development Commands
 
