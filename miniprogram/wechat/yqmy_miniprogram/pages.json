@@ -62,32 +62,32 @@
 			{
 				"pagePath": "pages/index/index",
 				"text": "首页",
-				"iconPath": "/static/icons/home-d.png",
-				"selectedIconPath": "/static/icons/home-a.png"
+				"iconPath": "/static/icons/tabbar/home-d.png",
+				"selectedIconPath": "/static/icons/tabbar/home-a.png"
 			},
 			{
 				"pagePath": "pages/tasks/tasks",
 				"text": "任务",
-				"iconPath": "/static/icons/task-d.png",
-				"selectedIconPath": "/static/icons/task-a.png"
+				"iconPath": "/static/icons/tabbar/task-d.png",
+				"selectedIconPath": "/static/icons/tabbar/task-a.png"
 			},
 			{
 				"pagePath": "pages/publish/publish",
 				"text": "发布",
-				"iconPath": "/static/icons/publish-d.png",
-				"selectedIconPath": "/static/icons/publish-a.png"
+				"iconPath": "/static/icons/tabbar/publish-d.png",
+				"selectedIconPath": "/static/icons/tabbar/publish-a.png"
 			},
 			{
 				"pagePath": "pages/messages/messages",
 				"text": "消息",
-				"iconPath": "/static/icons/message-d.png",
-				"selectedIconPath": "/static/icons/message-a.png"
+				"iconPath": "/static/icons/tabbar/message-d.png",
+				"selectedIconPath": "/static/icons/tabbar/message-a.png"
 			},
 			{
 				"pagePath": "pages/profile/profile",
 				"text": "我的",
-				"iconPath": "/static/icons/profile-d.png",
-				"selectedIconPath": "/static/icons/profile-a.png"
+				"iconPath": "/static/icons/tabbar/profile-d.png",
+				"selectedIconPath": "/static/icons/tabbar/profile-a.png"
 			}
 		]
 	},
