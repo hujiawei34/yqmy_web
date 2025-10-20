@@ -1,0 +1,95 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "要钱没用",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"backgroundColor": "#F5F5F5",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/tasks/tasks",
+			"style": {
+				"navigationBarTitleText": "任务大厅",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"backgroundColor": "#F5F5F5"
+			}
+		},
+		{
+			"path": "pages/publish/publish",
+			"style": {
+				"navigationBarTitleText": "发布任务",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"backgroundColor": "#F5F5F5"
+			}
+		},
+		{
+			"path": "pages/messages/messages",
+			"style": {
+				"navigationBarTitleText": "消息中心",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"backgroundColor": "#F5F5F5"
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTextStyle": "black",
+				"backgroundColor": "#F5F5F5"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "要钱没用",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F5F5F5"
+	},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#F59E0B",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/static/icons/home-d.png",
+				"selectedIconPath": "/static/icons/home-a.png"
+			},
+			{
+				"pagePath": "pages/tasks/tasks",
+				"text": "任务",
+				"iconPath": "/static/icons/task-d.png",
+				"selectedIconPath": "/static/icons/task-a.png"
+			},
+			{
+				"pagePath": "pages/publish/publish",
+				"text": "发布",
+				"iconPath": "/static/icons/publish-d.png",
+				"selectedIconPath": "/static/icons/publish-a.png"
+			},
+			{
+				"pagePath": "pages/messages/messages",
+				"text": "消息",
+				"iconPath": "/static/icons/message-d.png",
+				"selectedIconPath": "/static/icons/message-a.png"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"text": "我的",
+				"iconPath": "/static/icons/profile-d.png",
+				"selectedIconPath": "/static/icons/profile-a.png"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}

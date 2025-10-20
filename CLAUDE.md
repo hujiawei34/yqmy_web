@@ -29,9 +29,9 @@ YQMY Web (要钱没用) is a task/freelance platform where users use points inst
 - **Shared Assets**: `front/common/api.js`, `front/images/`
 
 ### Key Technologies
-- **Backend**: Spring Boot, MyBatis Plus, PostgreSQL, Redis, MinIO, Swagger/SpringFox
-- **Frontend**: Vanilla JavaScript, CSS3, HTML5
-- **Deployment**: Docker containers with host networking
+- **Backend**: Spring Boot 2.7.17, MyBatis Plus 3.5.2, PostgreSQL, Redis, MinIO 8.5.7, Swagger/SpringFox 3.0.0, Lombok
+- **Frontend**: Vanilla JavaScript, CSS3, HTML5, live-server for development
+- **Deployment**: Podman containers with host networking, Docker Compose alternative available
 
 ## Common Development Commands
 
@@ -40,50 +40,64 @@ YQMY Web (要钱没用) is a task/freelance platform where users use points inst
 # Build the project
 cd backend && mvn clean package
 
+# Build without tests (faster)
+cd backend && mvn clean package -DskipTests
+
 # Run backend locally (requires dependencies)
 cd backend && mvn spring-boot:run
 
 # Run tests
 cd backend && mvn test
+
+# Start backend with production JAR
+cd backend && ./start.sh
 ```
 
 ### Infrastructure Setup
 ```bash
-# Set up all services (Redis, PostgreSQL, MinIO)
-cd backend/deploy && ./prepare.sh
+# Set up all services (Redis, PostgreSQL, MinIO) using Podman
+./deploy/prepare.sh
 
 # Build and deploy backend
-cd backend/deploy && ./start.sh
+./deploy/start.sh
 
 # Update database schema
-cd backend/deploy && ./updateSchema.sh
+./deploy/updateSchema.sh
+
+# Docker Compose alternative (for local development)
+cd deploy/docker && docker-compose up -d
 ```
 
 ### Frontend Development
 The frontend is static HTML/CSS/JavaScript. Serve the `front/` directory with any web server:
 ```bash
+# Using live-server (recommended for development)
+cd front && npx live-server --port=8000
+
 # Simple Python server
 cd front && python3 -m http.server 3000
 
-# Or use any static file server
+# Using Docker Compose (includes live-server)
+cd deploy/docker && docker-compose up frontend
 ```
 
 ## Configuration
 
 ### Database Configuration
-- **URL**: `jdbc:postgresql://localhost:5432/yqmy_db`
+- **URL**: `jdbc:postgresql://postgres-server:5432/yqmy_db` (Docker) or `jdbc:postgresql://localhost:5432/yqmy_db` (local)
 - **User**: `postgres`
 - **Password**: `pgsql@yqmy`
 
-### Redis Configuration  
-- **Host**: `redis-server`
+### Redis Configuration
+- **Host**: `redis-server` (Docker) or `localhost` (local)
 - **Port**: `6379`
 
 ### MinIO Configuration
-- **Endpoint**: `http://minio-server:9000`
+- **Endpoint**: `http://minio-server:9000` (Docker) or `http://localhost:9000` (local)
 - **Access Key**: `minioadmin`
 - **Secret Key**: `minioadmin@yqmy`
 - **Bucket**: `yqmy`
+- **Console**: Available at port `9001`
 
 ## API Documentation
 Swagger UI is available at `http://localhost:8080/swagger-ui/` when the backend is running.
