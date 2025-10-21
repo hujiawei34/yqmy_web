@@ -15,7 +15,7 @@
 				<view
 					v-for="(task, index) in displayTasks"
 					:key="task.id"
-					class="task-item"
+					:class="['task-item', getTaskBackgroundClass(index)]"
 					@tap="onTaskClick(task)"
 				>
 					<view class="task-content">
@@ -143,6 +143,19 @@ export default {
 			return statusMap[status] || '未知';
 		},
 
+		// 获取任务背景色类名
+		getTaskBackgroundClass(index) {
+			// 循环使用5种不同的浅色背景
+			const backgroundClasses = [
+				'task-bg-blue',
+				'task-bg-green',
+				'task-bg-purple',
+				'task-bg-pink',
+				'task-bg-yellow'
+			];
+			return backgroundClasses[index % backgroundClasses.length];
+		},
+
 		// 点击任务项
 		onTaskClick(task) {
 			uni.navigateTo({
@@ -242,7 +255,28 @@ export default {
 }
 
 .task-item:active {
-	background-color: rgba(245, 158, 11, 0.05);
+	background-color: rgba(245, 158, 11, 0.15) !important;
+}
+
+/* 任务背景色变体 */
+.task-bg-blue {
+	background-color: rgba(59, 130, 246, 0.04);
+}
+
+.task-bg-green {
+	background-color: rgba(16, 185, 129, 0.04);
+}
+
+.task-bg-purple {
+	background-color: rgba(139, 92, 246, 0.04);
+}
+
+.task-bg-pink {
+	background-color: rgba(236, 72, 153, 0.04);
+}
+
+.task-bg-yellow {
+	background-color: rgba(245, 158, 11, 0.04);
 }
 
 .task-content {
@@ -363,10 +397,10 @@ export default {
 	position: fixed;
 	bottom: 40rpx;
 	right: 40rpx;
-	background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+	background: linear-gradient(45deg, #FFD700, #FFC107);
 	border-radius: 60rpx;
 	padding: 24rpx 40rpx;
-	box-shadow: 0 8rpx 24rpx rgba(245, 158, 11, 0.4);
+	box-shadow: 0 8rpx 24rpx rgba(255, 215, 0, 0.4);
 	display: flex;
 	align-items: center;
 	gap: 16rpx;
@@ -376,7 +410,7 @@ export default {
 
 .publish-fab:active {
 	transform: scale(0.95);
-	box-shadow: 0 4rpx 16rpx rgba(245, 158, 11, 0.6);
+	box-shadow: 0 4rpx 16rpx rgba(255, 215, 0, 0.6);
 }
 
 .fab-icon {
