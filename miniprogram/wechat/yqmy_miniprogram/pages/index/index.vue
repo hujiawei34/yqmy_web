@@ -39,10 +39,7 @@
 					<swiper-item v-for="(banner, index) in banners" :key="index" @tap="onBannerClick(banner)">
 						<view class="banner-item">
 							<image class="banner-image" :src="banner.image" mode="aspectFill" />
-							<view class="banner-overlay">
-								<text class="banner-title">{{ banner.title }}</text>
-								<text class="banner-desc">{{ banner.description }}</text>
-							</view>
+							<!-- 移除文本叠加层，使用纯图片展示 -->
 						</view>
 					</swiper-item>
 				</swiper>
@@ -146,23 +143,23 @@ export default {
 			banners: [
 				{
 					id: 1,
-					title: '欢迎来到要钱没用',
+					title: '欢迎来到互助社区',
 					description: '积分制任务平台，完成任务赚积分',
-					image: '/static/images/banner1.jpg',
+					image: 'https://yaoqianmeiyong.site/images/yqmy/banners/banner1.png',
 					link: '/pages/about/about'
 				},
 				{
 					id: 2,
 					title: '发布你的第一个任务',
 					description: '使用积分发布任务，让他人帮你完成',
-					image: '/static/images/banner2.jpg',
+					image: 'https://yaoqianmeiyong.site/images/yqmy/banners/banner2.png',
 					link: '/pages/publish/publish'
 				},
 				{
 					id: 3,
 					title: '积分规则说明',
 					description: '了解如何赚取和使用积分',
-					image: '/static/images/banner3.jpg',
+					image: 'https://yaoqianmeiyong.site/images/yqmy/banners/banner3.png',
 					link: '/pages/rules/rules'
 				}
 			],

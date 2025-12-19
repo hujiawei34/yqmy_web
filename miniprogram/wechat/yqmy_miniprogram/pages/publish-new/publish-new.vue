@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import { API_BASE_URL } from '../../common/api.js'
 export default {
 	data() {
 		return {
@@ -150,20 +151,30 @@ export default {
 		// 选择图片
 		selectImages() {
 			const remainingCount = 9 - this.productData.images.length;
-			uni.chooseImage({
-				count: remainingCount,
-				sizeType: ['compressed'],
-				sourceType: ['album', 'camera'],
-				success: (res) => {
-					this.productData.images = this.productData.images.concat(res.tempFilePaths);
-				},
-				fail: (err) => {
-					uni.showToast({
-						title: '选择图片失败',
-						icon: 'none'
-					});
-				}
-			});
+			// Try album+camera first; on devices without camera (e.g., some simulators),
+			// fallback to album-only on failure.
+			const pick = (sourceType) => {
+				uni.chooseImage({
+					count: remainingCount,
+					sizeType: ['compressed'],
+					sourceType,
+					success: (res) => {
+						this.productData.images = this.productData.images.concat(res.tempFilePaths);
+					},
+					fail: () => {
+						if (sourceType.includes('camera')) {
+							// Retry without camera on devices/simulators that don't support it
+							pick(['album'])
+						} else {
+							uni.showToast({
+								title: '选择图片失败',
+								icon: 'none'
+							});
+						}
+					}
+				});
+			}
+			pick(['album', 'camera'])
 		},
 
 		// 删除图片
@@ -187,13 +198,18 @@ export default {
 
 		// 选择位置
 		selectLocation() {
+			// Some simulators (e.g., 2-in-1) may not support location picker.
+			if (typeof uni.chooseLocation !== 'function') {
+				uni.showToast({ title: '当前设备不支持位置选择', icon: 'none' })
+				return
+			}
 			uni.chooseLocation({
 				success: (res) => {
 					this.productData.location = `${res.name} ${res.address}`;
 				},
-				fail: (err) => {
+				fail: () => {
 					uni.showToast({
-						title: '获取位置失败',
+						title: '无法获取位置或未授权',
 						icon: 'none'
 					});
 				}
@@ -202,6 +218,9 @@ export default {
 
 		// 设置价格
 		setPrice() {
+			// Some runtimes (e.g., certain mini programs or simulators) may not support editable modal.
+			// Provide a simple fallback using an action sheet.
+			// #ifdef APP-PLUS
 			uni.showModal({
 				title: '设置价格',
 				content: '请输入商品价格',
@@ -213,14 +232,23 @@ export default {
 						if (!isNaN(price) && price >= 0) {
 							this.productData.price = price.toFixed(2);
 						} else {
-							uni.showToast({
-								title: '请输入正确的价格',
-								icon: 'none'
-							});
+							uni.showToast({ title: '请输入正确的价格', icon: 'none' });
 						}
 					}
 				}
 			});
+			// #endif
+
+			// #ifdef APP-HARMONY || MP-WEIXIN || H5
+			const options = ['5.00', '10.00', '20.00', '50.00', '100.00']
+			uni.showActionSheet({
+				itemList: options.map(v => `¥${v}`),
+				success: (res) => {
+					const val = parseFloat(options[res.tapIndex])
+					this.productData.price = val.toFixed(2)
+				}
+			})
+			// #endif
 		},
 
 		// 设置发货方式
@@ -269,7 +297,7 @@ export default {
 
 			// 调用API提交商品
 			uni.request({
-				url: 'http://localhost:8080/api/products',
+				url: `${API_BASE_URL}/products`,
 				method: 'POST',
 				data: submitData,
 				success: (res) => {

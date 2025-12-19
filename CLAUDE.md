@@ -4,106 +4,214 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-YQMY Web (要钱没用) is a task/freelance platform where users use points instead of money to post and complete tasks. The project consists of:
+YQMY Web (要钱没用) is a points-based task/freelance platform where users post tasks and complete work using points instead of money. The project consists of three main components:
 
 - **Backend**: Spring Boot 2.7.17 REST API with Java 17
-- **Frontend**: Vanilla HTML/CSS/JavaScript (no framework)
-- **Database**: PostgreSQL 
-- **Cache**: Redis
-- **File Storage**: MinIO
+- **Frontend**: Vanilla HTML/CSS/JavaScript (no framework, static files)
+- **WeChat Mini Program**: uni-app based mobile application (Vue 3, mp-weixin target)
+- **Infrastructure**: PostgreSQL, Redis, MinIO (file storage)
 
 ## Architecture
 
 ### Backend Structure
-- **Main Application**: `backend/src/main/java/com/yqmy/YqmyWebApplication.java`
-- **Controllers**: REST endpoints in `backend/src/main/java/com/yqmy/controller/`
-- **Services**: Business logic in `backend/src/main/java/com/yqmy/service/`
-- **Entities**: JPA entities in `backend/src/main/java/com/yqmy/entity/`
-- **Mappers**: MyBatis Plus mappers in `backend/src/main/java/com/yqmy/mapper/`
-- **Configuration**: Spring configurations in `backend/src/main/java/com/yqmy/config/`
+The backend follows a layered architecture with clear separation of concerns:
 
-### Frontend Structure
-- **Entry Point**: `front/index.html` (redirects to main page)
-- **Main Page**: `front/pages/index/` (homepage)
-- **Authentication**: `front/pages/login/` and `front/pages/signup/`
-- **Shared Assets**: `front/common/api.js`, `front/images/`
+**Core Packages**:
+- `backend/src/main/java/com/yqmy/YqmyWebApplication.java` — Spring Boot entry point
+- `controller/` — REST endpoints; use plural paths (e.g., `/api/users`); annotate with Swagger `@ApiOperation`
+- `service/` — Business logic; interfaces in `service/`, implementations in `service/impl/`
+- `mapper/` — MyBatis Plus mappers; follow `<Entity>Mapper` naming pattern; auto-generated via MyBatis Plus
+- `entity/` — JPA entities with `@Data` (Lombok); use `@TableName` for MyBatis Plus
+- `config/` — Spring configurations (CORS, MinIO, Redis, Swagger, WebConfig)
 
-### Key Technologies
-- **Backend**: Spring Boot 2.7.17, MyBatis Plus 3.5.2, PostgreSQL, Redis, MinIO 8.5.7, Swagger/SpringFox 3.0.0, Lombok
-- **Frontend**: Vanilla JavaScript, CSS3, HTML5, live-server for development
-- **Deployment**: Podman containers with host networking, Docker Compose alternative available
+**Key Configuration Files**:
+- `config/CorsConfig.java` — Frontend origin must match for browser requests
+- `config/MinioConfig.java` — S3-compatible object storage for file upload/download
+- `config/RedisConfig.java` — Cache and session management
+- `config/MybatisPlusConfig.java` — Pagination and query customizations
+- `config/SwaggerConfig.java` — API documentation at `/swagger-ui/`
+
+**Database Access Pattern**:
+- PostgreSQL queries use MyBatis Plus mappers
+- Pagination via `Page<Entity>` objects
+- Use `JsonbTypeHandler` for JSONB column conversion
+- Add column comments via `COMMENT ON COLUMN` statements (PostgreSQL doesn't support inline comments in `CREATE TABLE`)
+
+### Frontend Structure (Vanilla JavaScript)
+
+**Entry Points**:
+- `front/index.html` — Main redirect page
+- `front/pages/index/` — Homepage with task listings
+- `front/pages/login/` and `front/pages/signup/` — Authentication pages
+- `front/common/api.js` — Centralized API client; export helpers for browser and CommonJS environments
+
+**Code Style**:
+- ES6 `async/await` for asynchronous operations
+- Static asset filenames use lowercase-with-hyphens convention
+- CSS organized by page; reusable utilities in `front/common/`
+
+**Important**: Update `front/common/api.js` backend URL when backend host/port changes.
+
+### WeChat Mini Program Structure (uni-app)
+
+**Key Files**:
+- `miniprogram/wechat/yqmy_miniprogram/manifest.json` — Platform configuration; WeChat AppID: `wx53dab80c6aaf58d1`
+- `miniprogram/wechat/yqmy_miniprogram/pages.json` — Page routing and tab bar (5 tabs: 首页/任务/发布/消息/我的)
+- `miniprogram/wechat/yqmy_miniprogram/App.vue` — Global styles and lifecycle
+- `miniprogram/wechat/yqmy_miniprogram/main.js` — Vue 3 SSR entry point
+- `miniprogram/wechat/yqmy_miniprogram/pages/` — Individual page components
+
+**Development**:
+- Developed with HBuilderX (not CLI-based); use HBuilderX UI to run and publish
+- Build outputs to `unpackage/dist/dev/mp-weixin/` (dev) or `unpackage/dist/build/mp-weixin/` (prod)
+- Import built project into WeChat Developer Tools for testing and submission
+
+**Assets**:
+- Icons in `/static/icons/` with naming: `name-a.png` (active) and `name-d.png` (inactive)
+- Theme color: Orange (#F59E0B); pull-refresh enabled on homepage
+- rpx units for responsive mobile layout
 
 ## Common Development Commands
 
-### Backend Development
+### Backend
+
 ```bash
-# Build the project
+# Build with tests
 cd backend && mvn clean package
 
-# Build without tests (faster)
+# Build faster (skip tests)
 cd backend && mvn clean package -DskipTests
-
-# Run backend locally (requires dependencies)
-cd backend && mvn spring-boot:run
 
 # Run tests
 cd backend && mvn test
 
-# Start backend with production JAR
+# Run specific test
+cd backend && mvn test -Dtest=UserServiceTest
+
+# Local development (requires PostgreSQL, Redis, MinIO running)
+cd backend && mvn spring-boot:run
+
+# Production JAR start
 cd backend && ./start.sh
 ```
 
-### Infrastructure Setup
+### Infrastructure (Podman/Docker)
+
 ```bash
-# Set up all services (Redis, PostgreSQL, MinIO) using Podman
+# Set up all services (Redis, PostgreSQL, MinIO) with Podman using host networking
 ./deploy/prepare.sh
 
-# Build and deploy backend
+# Full build and deployment
 ./deploy/start.sh
 
-# Update database schema
+# Update database schema only
 ./deploy/updateSchema.sh
 
-# Docker Compose alternative (for local development)
-cd deploy/docker && docker-compose up -d
+# Docker Compose alternative (includes auto-reload for frontend)
+cd deploy/docker && docker compose up -d
 ```
 
-### Frontend Development
-The frontend is static HTML/CSS/JavaScript. Serve the `front/` directory with any web server:
+### Frontend
+
 ```bash
-# Using live-server (recommended for development)
+# Live reload development server (recommended)
 cd front && npx live-server --port=8000
 
-# Simple Python server
+# Python HTTP server
 cd front && python3 -m http.server 3000
 
-# Using Docker Compose (includes live-server)
-cd deploy/docker && docker-compose up frontend
+# Docker Compose includes frontend live-server
+cd deploy/docker && docker compose up frontend
 ```
 
-## Configuration
+### WeChat Mini Program
 
-### Database Configuration
-- **URL**: `jdbc:postgresql://postgres-server:5432/yqmy_db` (Docker) or `jdbc:postgresql://localhost:5432/yqmy_db` (local)
-- **User**: `postgres`
-- **Password**: `pgsql@yqmy`
+```bash
+# No CLI-based build; use HBuilderX UI:
+# 1. Open project in HBuilderX
+# 2. Run/Publish: 发行 -> 小程序-微信
+# 3. Select dev or production build
+# 4. Import from unpackage/dist/dev/mp-weixin/ into WeChat Developer Tools
+```
 
-### Redis Configuration
-- **Host**: `redis-server` (Docker) or `localhost` (local)
-- **Port**: `6379`
+## Configuration & Secrets
 
-### MinIO Configuration
-- **Endpoint**: `http://minio-server:9000` (Docker) or `http://localhost:9000` (local)
-- **Access Key**: `minioadmin`
-- **Secret Key**: `minioadmin@yqmy`
-- **Bucket**: `yqmy`
-- **Console**: Available at port `9001`
+### Database (PostgreSQL)
+- **Local/Dev**: `jdbc:postgresql://localhost:5432/yqmy_db` (user: `postgres`, password: `pgsql@yqmy`)
+- **Docker**: `jdbc:postgresql://postgres-server:5432/yqmy_db` (same credentials)
+- **Schema Migrations**: Run `./deploy/updateSchema.sh` after schema changes
 
-## API Documentation
-Swagger UI is available at `http://localhost:8080/swagger-ui/` when the backend is running.
+### Cache (Redis)
+- **Local/Dev**: `localhost:6379`
+- **Docker**: `redis-server:6379` (no auth)
 
-## Key Features Implemented
-- User authentication (login/signup)
-- File upload/download via MinIO
-- Basic user management
-- Cross-origin support for frontend-backend communication
+### Object Storage (MinIO)
+- **Local/Dev**: `http://localhost:9000` (user: `minioadmin`, password: `minioadmin@yqmy`, bucket: `yqmy`)
+- **Docker**: `http://minio-server:9000`
+- **Console**: Port `9001`
+
+### Environment Variables
+Store sensitive configuration in external `application-{profile}.yml` files (never hard-code). Profile example:
+- `application-dev.yml` — Local development overrides
+- `application-prod.yml` — Production secrets (use secrets management in deployment)
+
+## API & Documentation
+
+- **Swagger UI**: `http://localhost:8080/swagger-ui/` (backend running)
+- **REST Conventions**: Plural paths (e.g., `/api/users`, `/api/tasks`); use `@ApiOperation` for documentation
+- **CORS**: Configured in `CorsConfig.java`; update allowed origins if frontend URL changes
+
+## Testing
+
+- **Framework**: JUnit 5 with Spring test slices
+- **Location**: Mirror production packages under `backend/src/test/java`
+- **Naming**: Classes named `<Entity>ServiceTest`, `<Entity>ControllerTest`, etc.
+- **Strategy**: Mock external services; avoid live API/database calls in unit tests
+- **Pre-Commit**: Run `mvn test` to ensure no regressions before pushing
+
+## Code Style & Conventions
+
+**Java**:
+- 4-space indentation
+- UpperCamelCase for classes; lowerCamelCase for fields/methods
+- Use Lombok `@Data`, `@Getter`, `@Setter`, `@Builder` annotations
+- Annotate controllers with Swagger `@Api` and `@ApiOperation`
+
+**JavaScript**:
+- ES6 with `async/await` for async code
+- Export helpers with both browser globals and CommonJS fallback
+- Use const/let; avoid var
+
+**Database Naming**:
+- PostgreSQL tables: lowercase_with_underscores
+- Columns: lowercase_with_underscores
+- Use `COMMENT ON TABLE/COLUMN` for documentation
+
+**Mini Program (Vue 3)**:
+- Component files use .vue with script setup or composition API
+- Styles scoped to component; use CSS custom properties for theming
+- Icons/assets in `/static/` with semantic naming
+
+## Git & Deployment
+
+**Commit Messages**:
+- Format: `<scope>: <message>` (e.g., `backend: add user pagination`, `frontend: fix login form`)
+- Language: 中文 or English
+- Reference issues in body: `Closes #12`
+
+**Pull Requests**:
+- Clearly state feature/fix intent
+- Include screenshots or `curl` output for UI/API changes
+- Show test results: `mvn test` pass/fail
+- Call out schema or configuration changes
+
+**Branch Policy**:
+- Main branch: `main`
+- No force-push to `main`; use standard merge flow
+
+## Project Artifacts to Ignore
+
+- `backend/uploads/` — Runtime file uploads
+- `backend/logs/` — Runtime logs
+- `unpackage/dist/` — Mini program build output (regenerated on each build)
+- `docs/` and `pic/` — Reference only; do not commit runtime artifacts

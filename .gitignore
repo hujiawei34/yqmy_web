@@ -8,3 +8,8 @@
 .trae/
 .vscode/
 **/unpackage/
+*.p12
+*.csr
+*.cer
+*.p7b
+material/

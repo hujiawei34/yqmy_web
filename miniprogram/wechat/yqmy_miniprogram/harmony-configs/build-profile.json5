@@ -1,0 +1,82 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\hjw\\.ohos\\config\\default_app-harmony_QEaBAlVM2ITnbkqwl1C6zySuaNbCL8dk_-ooxID6Lzk=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B8001EF58A7BD395BC91E476A65E3B35F38A8DDA69C170A7417065416DB80586CAB349B188B2EBC",
+          "profile": "C:\\Users\\hjw\\.ohos\\config\\default_app-harmony_QEaBAlVM2ITnbkqwl1C6zySuaNbCL8dk_-ooxID6Lzk=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\hjw\\.ohos\\config\\default_app-harmony_QEaBAlVM2ITnbkqwl1C6zySuaNbCL8dk_-ooxID6Lzk=.p12",
+          "storePassword": "0000001BA99CC17D0FBB1F4706F949DAC423A894552896EBCCDDC5AA52252E9EABFEA6736C0696ADE3FC64"
+        }
+      },
+      {
+        "name": "release",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "C:/code/github/yqmy_web/miniprogram/wechat/yqmy_miniprogram/harmony-configs/yqmy-hap.p12",
+          "storePassword": "000000184FA13456707D337DD25CF99070E026F775B72B4AA48880052CB4F910C2B8D782243724BF",
+          "keyAlias": "yqmy-hap",
+          "keyPassword": "00000018E30570274B64BBD02277623A86BD3099E50027C6670B7C8D10573327ECCCEB22A602E626",
+          "signAlg": "SHA256withECDSA",
+          "profile": "C:/code/github/yqmy_web/miniprogram/wechat/yqmy_miniprogram/harmony-configs/yqmy-hapRelease.p7b",
+          "certpath": "C:/code/github/yqmy_web/miniprogram/wechat/yqmy_miniprogram/harmony-configs/yqmy-hap.cer"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "6.0.0(20)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        },
+        "targetSdkVersion": "6.0.0(20)"
+      },
+      {
+        "name": "release",
+        "signingConfig": "release",
+        "compatibleSdkVersion": "6.0.0(20)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default",
+            "release"
+          ]
+        }
+      ]
+    }
+  ]
+}
